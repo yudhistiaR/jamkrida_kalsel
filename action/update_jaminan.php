@@ -13,6 +13,8 @@ if (isset($_POST['perbarui'])) {
         $type_jaminan = 'bank_garansi.php';
     } else if ($type == 'kreditmikro') {
         $type_jaminan = 'kredit_mikro.php';
+    } else if ($type == 'barangjasa') {
+        $type_jaminan = 'barang_jasa.php';
     }
 
     $sqlcek = "SELECT * FROM pengajuan_jaminan WHERE id='$id'";
