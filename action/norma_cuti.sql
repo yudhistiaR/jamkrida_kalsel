@@ -41,8 +41,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_adm`, `nama_adm`, `telp_adm`, `user_adm`, `pass_adm`, `foto_adm`) VALUES
-(1, 'Administrator', '08962878534', 'admin', 'norma', ''),
-(2, 'M.Yudhistia Rahman', '908021', 'user', 'user', '');
+(1, 'Administrator', '08962878534', 'admin', 'norma', 'gfgfg'),
+(2, 'M.Yudhistia Rahman', '908021', 'user', 'user', 'ghgjhg');
 
 -- --------------------------------------------------------
 
@@ -116,8 +116,8 @@ CREATE TABLE `pengajuan_jaminan` (
   `admin_id` int(11) DEFAULT NULL,
   `type_jaminan` enum('suretybond','bankgaransi','kreditmikro','barangjasa','multiguna') NOT NULL,
   `status` enum('Pending','Di Tolak','Di Setujui','') NOT NULL,
-  `create_at` date NOT NULL DEFAULT current_timestamp(),
-  `update_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `create_at` TIMESTAMP NOT NULL DEFAULT current_timestamp(),
+  `update_at` TIMESTAMP NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
