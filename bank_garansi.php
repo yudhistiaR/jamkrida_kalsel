@@ -4,7 +4,6 @@ include("sess_check.php");
 // Deskripsi halaman
 $pagedesc = "Bank Garansi";
 include("layout_top.php");
-include("layout_bottom.php");
 include("dist/function/format_tanggal.php");
 include("dist/function/format_rupiah.php");
 include("libs/formatMataUang.php");
@@ -15,7 +14,7 @@ include("libs/formatMataUang.php");
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">Bank Garansi</h1>
+        <h1 class="page-header">Data Bank Garansi</h1>
       </div>
     </div>
 
@@ -35,35 +34,36 @@ include("libs/formatMataUang.php");
                   <th width="1%">No. Pemohon</th>
                   <th width="10%">Nama Agen</th>
                   <th width="10%">Nama Perusahaan</th>
-                  <th width="5%">Telepon</th>
                   <th width="10%">Jenis Jaminan</th>
                   <th width="10%">Nilai Jaminan</th>
+                  <th width="10%">Status</th>
                   <th width="10%">Opsi</th>
                 </tr>
               </thead>
               <tbody>
                 <?php
                 $i = 1;
-                $sql = "SELECT 
-	pengajuan_jaminan.id AS id_pengajuan,
-	user.username AS nama_user,
-	user.email,
-	jaminan.id AS no_pemohon,
-	jaminan.nama_agen,
-	jaminan.nama_perusahaan,
-	jaminan.jenis_jaminan,
-	jaminan.nilai_jaminan,
-	pengajuan_jaminan.type_jaminan,
-	pengajuan_jaminan.status
-	FROM pengajuan_jaminan
-	JOIN user ON pengajuan_jaminan.user_id = user.id
-	JOIN jaminan ON pengajuan_jaminan.jaminan_id = jaminan.id
-	LEFT JOIN admin ON pengajuan_jaminan.admin_id = admin.id_adm
-	WHERE pengajuan_jaminan.type_jaminan = 'bankgaransi'
-	ORDER BY pengajuan_jaminan.id ASC";
+                $sql = "SELECT
+          pengajuan_jaminan.id AS id_pengajuan,
+          user.username AS nama_user,
+          user.email,
+          jaminan.id AS no_pemohon,
+          jaminan.nama_agen,
+          jaminan.nama_perusahaan,
+          jaminan.jenis_jaminan,
+          jaminan.nilai_jaminan,
+          pengajuan_jaminan.status,
+          pengajuan_jaminan.type_jaminan
+        FROM pengajuan_jaminan
+        JOIN user ON pengajuan_jaminan.user_id = user.id
+        JOIN jaminan ON pengajuan_jaminan.jaminan_id = jaminan.id
+        LEFT JOIN admin ON pengajuan_jaminan.admin_id = admin.id_adm
+        WHERE pengajuan_jaminan.type_jaminan = 'bankgaransi'
+        ORDER BY pengajuan_jaminan.id ASC";
+
 
                 $ress = mysqli_query($conn, $sql);
-                while ($data = mysqli_fetch_array($ress)) {
+                while ($data = mysqli_fetch_assoc($ress)) {
                 ?>
                   <tr>
                     <td class="text-center"> <?= $data['id_pengajuan']; ?> </td>
@@ -110,7 +110,7 @@ include("libs/formatMataUang.php");
       "processing": true,
       "columnDefs": [{
         "orderable": false,
-        "targets": [6]
+        "targets": [5]
       }]
     });
 
@@ -133,3 +133,7 @@ include("libs/formatMataUang.php");
     }
   });
 </script>
+
+<?php
+include("layout_bottom.php");
+?>
