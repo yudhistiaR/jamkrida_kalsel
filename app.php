@@ -42,10 +42,8 @@ $id = $sess_admid;
 									jaminan.nama_perusahaan,
 									jaminan.jenis_jaminan,
 									jaminan.nilai_jaminan,
-									pengajuan_jaminan.id AS id_pengajuan,
 									pengajuan_jaminan.create_at,
 									pengajuan_jaminan.update_at,
-									pengajuan_jaminan.status,
 									pengajuan_jaminan.type_jaminan
 								FROM pengajuan_jaminan
 								JOIN user ON pengajuan_jaminan.user_id = user.id
