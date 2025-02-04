@@ -14,6 +14,7 @@ if (isset($_GET['id'])) {
           jaminan.nama_perusahaan,
           jaminan.jenis_jaminan,
           jaminan.nilai_jaminan,
+          pengajuan_jaminan.type_jaminan,
           pengajuan_jaminan.status,
           pengajuan_jaminan.create_at
         FROM pengajuan_jaminan
@@ -47,7 +48,7 @@ include("layout_top.php");
 
     <div class="row">
       <div class="col-lg-12">
-        <form class="form-horizontal" action="suretybond_update.php" method="POST" enctype="multipart/form-data">
+        <form class="form-horizontal" action="action/update_jaminan.php" method="POST" enctype="multipart/form-data">
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3>Edit Data</h3>
@@ -109,6 +110,7 @@ include("layout_top.php");
                     <option value="Di Setujui" <?php echo ($data['status'] == 'Di Setujui') ? 'selected' : ''; ?>>Di Setujui</option>
                     <option value="Di Tolak" <?php echo ($data['status'] == 'Di Tolak') ? 'selected' : ''; ?>>Di Tolak</option>
                   </select>
+                  <input type="text" name="type" value="<?php echo $data['type_jaminan'] ?>" readonly hidden>
                 </div>
               </div>
               <div class="panel-footer">

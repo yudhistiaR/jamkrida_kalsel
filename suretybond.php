@@ -52,7 +52,8 @@ include("libs/formatMataUang.php");
           jaminan.nama_perusahaan,
           jaminan.jenis_jaminan,
           jaminan.nilai_jaminan,
-          pengajuan_jaminan.status
+          pengajuan_jaminan.status,
+          pengajuan_jaminan.type_jaminan
         FROM pengajuan_jaminan
         JOIN user ON pengajuan_jaminan.user_id = user.id
         JOIN jaminan ON pengajuan_jaminan.jaminan_id = jaminan.id
@@ -74,7 +75,7 @@ include("libs/formatMataUang.php");
                     <td class="text-center">
                       <a href="#myModal" data-toggle="modal" data-load-code="<?= $data['id_pengajuan']; ?>" data-remote-target="#myModal .modal-body" class="btn btn-primary btn-xs">Detail</a>
                       <a href="suretybond_edit.php?id=<?= $data['id_pengajuan']; ?>" class="btn btn-warning btn-xs">Edit</a>
-                      <a href="action/suretybond_hapus.php?id=<?= $data['id_pengajuan']; ?>" onclick="return confirm('Apakah anda yakin akan menghapus <?= $data['nama_agen']; ?>?');" class="btn btn-danger btn-xs">Hapus</a>
+                      <a href="action/delete_jaminan.php?id=<?= $data['id_pengajuan']; ?>&type=<?= $data['type_jaminan']; ?>" onclick="return confirm('Apakah anda yakin akan menghapus <?= $data['nama_agen']; ?>?');" class="btn btn-danger btn-xs">Hapus</a>
                     </td>
                   </tr>
                 <?php

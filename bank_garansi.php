@@ -44,21 +44,38 @@ include("libs/formatMataUang.php");
               <tbody>
                 <?php
                 $i = 1;
-                $sql = "SELECT * FROM jaminan WHERE type='bankgaransi' ORDER BY nama_agen ASC";
+                $sql = "SELECT 
+	pengajuan_jaminan.id AS id_pengajuan,
+	user.username AS nama_user,
+	user.email,
+	jaminan.id AS no_pemohon,
+	jaminan.nama_agen,
+	jaminan.nama_perusahaan,
+	jaminan.jenis_jaminan,
+	jaminan.nilai_jaminan,
+	pengajuan_jaminan.type_jaminan,
+	pengajuan_jaminan.status
+	FROM pengajuan_jaminan
+	JOIN user ON pengajuan_jaminan.user_id = user.id
+	JOIN jaminan ON pengajuan_jaminan.jaminan_id = jaminan.id
+	LEFT JOIN admin ON pengajuan_jaminan.admin_id = admin.id_adm
+	WHERE pengajuan_jaminan.type_jaminan = 'bankgaransi'
+	ORDER BY pengajuan_jaminan.id ASC";
+
                 $ress = mysqli_query($conn, $sql);
                 while ($data = mysqli_fetch_array($ress)) {
                 ?>
                   <tr>
-                    <td class="text-center"> <?= $data['id']; ?> </td>
-                    <td class="text-center"> <?= $data['nama_agen']; ?> </td>
+                    <td class="text-center"> <?= $data['id_pengajuan']; ?> </td>
+                    <td class="text-center"> <?= $data['nama_user']; ?> </td>
                     <td class="text-center"> <?= $data['nama_perusahaan']; ?> </td>
-                    <td class="text-center"> <?= $data['no_telp']; ?> </td>
                     <td class="text-center"> <?= $data['jenis_jaminan']; ?> </td>
                     <td class="text-center"> <?= formatRupiah($data['nilai_jaminan']); ?> </td>
+                    <td class="text-center"> <?= $data['status']; ?> </td>
                     <td class="text-center">
-                      <a href="#myModal" data-toggle="modal" data-load-code="<?= $data['id']; ?>" data-remote-target="#myModal .modal-body" class="btn btn-primary btn-xs">Detail</a>
-                      <a href="suretybond_edit.php?id=<?= $data['id']; ?>" class="btn btn-warning btn-xs">Edit</a>
-                      <a href="action/suretybond_hapus.php?id=<?= $data['id']; ?>" onclick="return confirm('Apakah anda yakin akan menghapus <?= $data['nama_agen']; ?>?');" class="btn btn-danger btn-xs">Hapus</a>
+                      <a href="#myModal" data-toggle="modal" data-load-code="<?= $data['id_pengajuan']; ?>" data-remote-target="#myModal .modal-body" class="btn btn-primary btn-xs">Detail</a>
+                      <a href="bank_garansi_edit.php?id=<?= $data['id_pengajuan']; ?>" class="btn btn-warning btn-xs">Edit</a>
+                      <a href="action/delete_jaminan.php?id=<?= $data['id_pengajuan']; ?>&type=<?= $data['type_jaminan']; ?>" onclick="return confirm('Apakah anda yakin akan menghapus <?= $data['nama_agen']; ?>?');" class="btn btn-danger btn-xs">Hapus</a>
                     </td>
                   </tr>
                 <?php
@@ -111,9 +128,8 @@ include("libs/formatMataUang.php");
     var $this = $(this);
     var code = $this.data('load-code');
     if (code) {
-      $($this.data('remote-target')).load('suretybond_detail.php?code=' + code);
+      $($this.data('remote-target')).load('bank_garansi_detail.php?code=' + code);
       app.code = code;
     }
   });
 </script>
-?>
