@@ -1,28 +1,28 @@
 <?php
-	include("sess_check.php");
-	
-	// query database memperbarui data pada database
-	if(isset($_POST['perbarui'])) {
-		$id=$_POST['id'];
-		$nama_agen=$_POST['nama_agen'];
-		$nama_perusahaan=$_POST['nama_perusahaan'];
-		$no_telp=$_POST['no_telp'];
-		$jenis_jaminan=$_POST['jenis_jaminan'];
-		$nilai_jaminan=$_POST['nilai_jaminan'];
-		
-		$sqlcek = "SELECT * FROM Jaminan WHERE id='$id'";
-		$ress = mysqli_query($conn, $sqlcek);
-		$rows = mysqli_num_rows($ress);
-		
-		$sql = "UPDATE Jaminan SET
-			nama_agen='". $nama_agen ."',
-			nama_perusahaan='". $nama_perusahaan ."',
-			no_telp='". $no_telp ."',
-			jenis_jaminan='". $jenis_jaminan ."',
-			nilai_jaminan='". $nilai_jaminan ."'
-		WHERE id='". $id ."'";
+include("sess_check.php");
+
+// query database memperbarui data pada database
+if (isset($_POST['perbarui'])) {
+	$id = $_POST['id'];
+	$status_jaminan = $_POST['status'];
+
+
+
+	$sqlcek = "SELECT * FROM pengajuan_jaminan WHERE id='$id'";
+	$ress = mysqli_query($conn, $sqlcek);
+	$rows = mysqli_num_rows($ress);
+
+	if ($rows > 0) {
+		$sql = "UPDATE pengajuan_jaminan SET
+				status='" . $status_jaminan . "',
+				admin_id='" . $sess_admid . "',
+				update_at='" . date('Y-m-d H:i:s') . "'
+			WHERE id='" . $id . "'";
 
 		$ress = mysqli_query($conn, $sql);
 		header("location: suretybond.php?act=update&msg=success");
+	} else {
+		echo $id;
+		echo "Data tidak ditemukan!";
 	}
-?>
+}

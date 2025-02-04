@@ -5,23 +5,23 @@ include("libs/formatMataUang.php");
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
   $sql = "SELECT
-                          pengajuan_jaminan.id AS id_pengajuan,
-                          user.username AS nama_user,
-                          user.email,
-                          user.telp_emp,
-                          jaminan.id,
-                          jaminan.nama_agen,
-                          jaminan.nama_perusahaan,
-                          jaminan.jenis_jaminan,
-                          jaminan.nilai_jaminan,
-                          admin.nama_adm,
-                          pengajuan_jaminan.status
-                        FROM pengajuan_jaminan
-                        JOIN user ON pengajuan_jaminan.user_id = user.id
-                        JOIN jaminan ON pengajuan_jaminan.jaminan_id = jaminan.id
-                        JOIN admin ON pengajuan_jaminan.admin_id = admin.id_adm
-                        WHERE pengajuan_jaminan.id = '$id'
-                        ORDER BY pengajuan_jaminan.id ASC";
+          pengajuan_jaminan.id AS id_pengajuan,
+          user.username AS nama_user,
+          user.email,
+          user.telp_emp,
+          jaminan.id AS no_pemohon,
+          jaminan.nama_agen,
+          jaminan.nama_perusahaan,
+          jaminan.jenis_jaminan,
+          jaminan.nilai_jaminan,
+          pengajuan_jaminan.status,
+          pengajuan_jaminan.create_at
+        FROM pengajuan_jaminan
+        JOIN user ON pengajuan_jaminan.user_id = user.id
+        JOIN jaminan ON pengajuan_jaminan.jaminan_id = jaminan.id
+        LEFT JOIN admin ON pengajuan_jaminan.admin_id = admin.id_adm
+        WHERE pengajuan_jaminan.id = '$id'
+        ORDER BY pengajuan_jaminan.id ASC";
   $ress = mysqli_query($conn, $sql);
   $data = mysqli_fetch_array($ress);
 }
@@ -56,43 +56,59 @@ include("layout_top.php");
               <div class="form-group">
                 <label class="control-label col-sm-3">No.Pemohon</label>
                 <div class="col-sm-4">
-                  <input type="text" name="id" class="form-control" placeholder="No.Pemohon" value="<?php echo $data['id'] ?>" readonly>
+                  <input type="text" name="id" class="form-control" placeholder="No.Pemohon" value="<?php echo $data['id_pengajuan'] ?>" readonly>
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-sm-3">Nama Agen</label>
                 <div class="col-sm-4">
-                  <input type="text" name="nama_agen" class="form-control" placeholder="Nama Agen" value="<?php echo $data['nama_agen'] ?>" required>
+                  <input type="text" name="nama_agen" class="form-control" placeholder="Nama Agen" value="<?php echo $data['nama_agen'] ?>" readonly>
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-sm-3">Nama Perusahaan</label>
                 <div class="col-sm-4">
-                  <input type="text" name="nama_perusahaan" class="form-control" placeholder="Nama Perusahaan" value="<?php echo $data['nama_perusahaan'] ?>" required>
+                  <input type="text" name="nama_perusahaan" class="form-control" placeholder="Nama Perusahaan" value="<?php echo $data['nama_perusahaan'] ?>" readonly>
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-sm-3">Telepon</label>
                 <div class="col-sm-4">
-                  <input type="number" name="telp_emp" min="0" class="form-control" placeholder="Telepon" value="<?php echo $data['telp_emp'] ?>" required>
+                  <input type="number" name="telp_emp" min="0" class="form-control" placeholder="Telepon" value="<?php echo $data['telp_emp'] ?>" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-3">Email</label>
+                <div class="col-sm-4">
+                  <input type="email" name="email" class="form-control" placeholder="Email" value="<?php echo $data['email'] ?>" readonly>
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-sm-3">Jenis Jaminan</label>
                 <div class="col-sm-4">
-                  <input type="text" name="jenis_jaminan" class="form-control" placeholder="Jenis Jaminan" value="<?php echo $data['jenis_jaminan'] ?>" required>
+                  <input type="text" name="jenis_jaminan" class="form-control" placeholder="Jenis Jaminan" value="<?php echo $data['jenis_jaminan'] ?>" readonly>
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-sm-3">Nilai Jaminan</label>
                 <div class="col-sm-4">
-                  <input type="text" name="nilai_jaminan" class="form-control" placeholder="Nilai Jaminan" value="<?php echo formatRupiah($data['nilai_jaminan']) ?>" required>
+                  <input type="text" name="nilai_jaminan" class="form-control" placeholder="Nilai Jaminan" value="<?php echo formatRupiah($data['nilai_jaminan']) ?>" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-3">Tanggal Pengajuan Jaminan</label>`
+                <div class="col-sm-4">
+                  <input type="datetime-local" name="create_at" class="form-control" value="<?php echo $data['create_at'] ?>" readonly>
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-sm-3">Status pengajuan</label>
                 <div class="col-sm-4">
-                  <input type="text" name="status" class="form-control" placeholder="Status" value="<?php echo $data['status'] ?>" required>
+                  <select name="status" class="form-control" required>
+                    <option value="Pending" <?php echo ($data['status'] == 'Pending') ? 'selected' : ''; ?>>Pending</option>
+                    <option value="Di Setujui" <?php echo ($data['status'] == 'Di Setujui') ? 'selected' : ''; ?>>Di Setujui</option>
+                    <option value="Di Tolak" <?php echo ($data['status'] == 'Di Tolak') ? 'selected' : ''; ?>>Di Tolak</option>
+                  </select>
                 </div>
               </div>
               <div class="panel-footer">

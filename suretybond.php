@@ -44,27 +44,28 @@ include("libs/formatMataUang.php");
                 <?php
                 $i = 1;
                 $sql = "SELECT
-                          pengajuan_jaminan.id AS id_pengajuan,
-                          user.username AS nama_user,
-                          user.email,
-                          jaminan.id,
-                          jaminan.nama_agen,
-                          jaminan.nama_perusahaan,
-                          jaminan.jenis_jaminan,
-                          jaminan.nilai_jaminan,
-                          pengajuan_jaminan.status
-                        FROM pengajuan_jaminan
-                        JOIN user ON pengajuan_jaminan.user_id = user.id
-                        JOIN jaminan ON pengajuan_jaminan.jaminan_id = jaminan.id
-                        JOIN admin ON pengajuan_jaminan.admin_id = admin.id_adm
-                        WHERE pengajuan_jaminan.type_jaminan = 'suretybond'
-                        ORDER BY pengajuan_jaminan.id ASC";
+          pengajuan_jaminan.id AS id_pengajuan,
+          user.username AS nama_user,
+          user.email,
+          jaminan.id AS no_pemohon,
+          jaminan.nama_agen,
+          jaminan.nama_perusahaan,
+          jaminan.jenis_jaminan,
+          jaminan.nilai_jaminan,
+          pengajuan_jaminan.status
+        FROM pengajuan_jaminan
+        JOIN user ON pengajuan_jaminan.user_id = user.id
+        JOIN jaminan ON pengajuan_jaminan.jaminan_id = jaminan.id
+        LEFT JOIN admin ON pengajuan_jaminan.admin_id = admin.id_adm
+        WHERE pengajuan_jaminan.type_jaminan = 'suretybond'
+        ORDER BY pengajuan_jaminan.id ASC";
+
 
                 $ress = mysqli_query($conn, $sql);
                 while ($data = mysqli_fetch_assoc($ress)) {
                 ?>
                   <tr>
-                    <td class="text-center"> <?= $data['id']; ?> </td>
+                    <td class="text-center"> <?= $data['id_pengajuan']; ?> </td>
                     <td class="text-center"> <?= $data['nama_user']; ?> </td>
                     <td class="text-center"> <?= $data['nama_perusahaan']; ?> </td>
                     <td class="text-center"> <?= $data['jenis_jaminan']; ?> </td>

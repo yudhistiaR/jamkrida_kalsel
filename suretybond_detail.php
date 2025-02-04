@@ -12,8 +12,8 @@ if ($_GET) {
           pengajuan_jaminan.id AS id_pengajuan,
           user.username AS nama_user,
           user.email,
+          user.telp_emp,
           jaminan.id,
-          jaminan.no_telp,
           jaminan.nama_agen,
           jaminan.nama_perusahaan,
           jaminan.jenis_jaminan,
@@ -78,7 +78,7 @@ if ($_GET) {
         <tr>
           <td width="20%"><b>Telepon</b></td>
           <td width="2%"><b>:</b></td>
-          <td width="78%"><?php echo $result['no_telp']; ?></td>
+          <td width="78%"><?php echo $result['telp_emp']; ?></td>
         </tr>
         <tr>
           <td colspan="3">&nbsp;</td>
@@ -117,7 +117,7 @@ if ($_GET) {
           <td colspan="3">&nbsp;</td>
         </tr>
         <tr>
-          <td width="20%"><b>Tanggal di setujui</b></td>
+          <td width="20%"><b>Tanggal Perubahan</b></td>
           <td width="2%"><b>:</b></td>
           <td width="78%"><?php echo format_tanggal($result['update_at']); ?></td>
         </tr>
