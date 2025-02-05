@@ -20,6 +20,22 @@
 	$ressa = mysqli_query($conn, $sqla);
 	$a = mysqli_num_rows($ressa);
 
+	$sql_wait = "SELECT COUNT(*) as total FROM pengajuan_jaminan WHERE status='Pending' AND user_id='$id'";
+	$ress_wait = mysqli_query($conn, $sql_wait);
+	$wait_row = mysqli_fetch_assoc($ress_wait);
+	$wait = $wait_row['total'];
+
+	$sql_wait = "SELECT COUNT(*) as total FROM pengajuan_jaminan WHERE status='Di Tolak' AND user_id='$id'";
+	$ress_wait = mysqli_query($conn, $sql_wait);
+	$wait_row = mysqli_fetch_assoc($ress_wait);
+	$tolak = $wait_row['total'];
+
+	$sql_wait = "SELECT COUNT(*) as total FROM pengajuan_jaminan WHERE status='Di Setujui' AND user_id='$id'";
+	$ress_wait = mysqli_query($conn, $sql_wait);
+	$wait_row = mysqli_fetch_assoc($ress_wait);
+	$acc = $wait_row['total'];
+
+
 	// deskripsi halaman
 	$pagedesc = "Beranda";
 	include("layout_top.php");
@@ -53,7 +69,7 @@
 										<i class="fa fa-check-circle fa-3x"></i>
 									</div>
 									<div class="col-xs-9 text-right">
-										<div class="huge"><?php echo $a; ?></div>
+										<div class="huge"><?php echo $acc; ?></div>
 										<div><h4>Disetujui</h4></div>
 									</div>
 								</div>
@@ -76,7 +92,7 @@
 										<i class="fa fa-plus-circle fa-3x"></i>
 									</div>
 									<div class="col-xs-9 text-right">
-										<div class="huge"><?php echo $b; ?></div>
+										<div class="huge"><?php echo $wait; ?></div>
 										<div><h4>Menunggu Persetujuan</h4></div>
 									</div>
 								</div>
@@ -99,7 +115,7 @@
 										<i class="fa fa-minus-circle fa-3x"></i>
 									</div>
 									<div class="col-xs-9 text-right">
-										<div class="huge"><?php echo $c; ?></div>
+										<div class="huge"><?php echo $tolak; ?></div>
 										<div><h4>Ditolak</h4></div>
 									</div>
 								</div>
