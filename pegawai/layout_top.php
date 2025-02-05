@@ -11,7 +11,7 @@
 	$tahun = date("Y");
 
 	$id=$sess_pegawaiid;	
-	$sql_g = "SELECT * FROM employee WHERE npp='$id'";
+	$sql_g = "SELECT * FROM user WHERE id='$id'";
 	$ress_g = mysqli_query($conn, $sql_g);
 	$res = mysqli_fetch_array($ress_g);
 ?>
@@ -26,30 +26,30 @@
 
 	<title>Sistem Informasi Pengajuan Cuti Online Cv. Indosari - <?php echo $pagedesc ?></title>
 
-	<link href="libs/images/logo_perusahaan.png" rel="icon" type="images/x-icon">
+	<link href="../libs/images/logo_perusahaan.png" rel="icon" type="images/x-icon">
 
     <!-- Bootstrap Core CSS -->
-	<link href="libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
 	<!-- MetisMenu CSS -->
-	<link href="libs/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+	<link href="../libs/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 	
 	<!-- DataTables CSS -->
-    <link href="libs/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="../libs/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- DataTables Responsive CSS -->
-    <link href="libs/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+    <link href="../libs/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
 
 	<!-- Custom CSS -->
-	<link href="dist/css/sb-admin-2.css" rel="stylesheet">
-	<link href="dist/css/offline-font.css" rel="stylesheet">
-	<link href="dist/css/custom.css" rel="stylesheet">
+	<link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+	<link href="../dist/css/offline-font.css" rel="stylesheet">
+	<link href="../dist/css/custom.css" rel="stylesheet">
 
 	<!-- Custom Fonts -->
-	<link href="libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="../libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	
 	<!-- jQuery -->
-	<script src="libs/jquery/dist/jquery.min.js"></script>
+	<script src="../libs/jquery/dist/jquery.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -87,7 +87,7 @@
             <ul class="nav navbar-top-links navbar-right">
 				<li class="dropdown dropdown-right">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-						<img src="../foto/<?php echo $res['foto_emp']?>" width="20px"></i>&nbsp;<?php echo ucfirst($sess_pegawainame); ?>&nbsp;<i class="fa fa-caret-down"></i>
+					<i class="fa fa-user fa-fw"></i>&nbsp;<?php echo ucfirst($sess_pegawaiid); ?>&nbsp;<i class="fa fa-caret-down"></i>
 					</a>
 					<ul class="dropdown-menu dropdown-user">
 						<li><a href="pengaturan.php"><i class="fa fa-gear fa-fw"></i>&nbsp;Pengaturan Akun</a></li>

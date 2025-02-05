@@ -4,7 +4,7 @@
 	$id=$sess_pegawaiid;
 
 	
-	$sql_g = "SELECT * FROM employee WHERE npp='$id'";
+	$sql_g = "SELECT * FROM user WHERE id='$id'";
 	$ress_g = mysqli_query($conn, $sql_g);
 	$res = mysqli_fetch_array($ress_g);
 	
@@ -23,7 +23,7 @@
 	// deskripsi halaman
 	$pagedesc = "Beranda";
 	include("layout_top.php");
-	include("dist/function/format_rupiah.php");
+	include("../dist/function/format_rupiah.php");
 ?>
 <!-- top of file -->
 		<!-- Page Content -->
@@ -34,9 +34,9 @@
 						<form class="form-horizontal">
 							<div class="panel panel-default">
 								<div class="panel-body">
-								<h2 align="center">Selamat Datang, <?php echo $res['nama_emp'];?>!</h2>
+								<h2 align="center">Selamat Datang, <?php echo $res['username'];?>!</h2>
 								<hr/>
-								<center><img src="../foto/<?php echo $res['foto_emp']?>" width="120px"></center>
+								<center><img src="https://th.bing.com/th/id/R.1871862d87bb8037d953317fb4497189?rik=MBf1NyuchSQUtQ&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f5%2fProfile.png&ehk=Ouu2uMvvMPnkP1bdIY2BTAzbwhRoG9p03NUzbwGLhlg%3d&risl=&pid=ImgRaw&r=0" width="120px"></center>
 								<hr/>
 								</div>
 							</div><!-- /.panel -->
