@@ -147,14 +147,6 @@ $tahun = date("Y");
                 </li>
               </ul>
             </li>
-            <li <?php echo (isset($menuparent) && $menuparent == "laporan") ? 'class="active"' : ''; ?>>
-              <a href="#"><i class="fa fa-folder fa-fw"></i>&nbsp;Laporan<span class="fa arrow"></span></a>
-              <ul class="nav nav-second-level">
-                <li <?php echo ($pagedesc == "Laporan") ? 'class="active"' : ''; ?>>
-                  <a href="laporan.php">Laporan</a>
-                </li>
-              </ul>
-            </li>
           </ul>
         </div>
       </div>

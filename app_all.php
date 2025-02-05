@@ -8,6 +8,7 @@ include("dist/function/format_tanggal.php");
 include("dist/function/format_rupiah.php");
 $id = $sess_admid;
 ?>
+
 <!-- top of file -->
 <!-- Page Content -->
 <div id="page-wrapper">
@@ -91,6 +92,9 @@ $id = $sess_admid;
 								?>
 							</tbody>
 						</table>
+						<div class="form-group">
+									<a href="laporan_all.php" target="_blank" class="btn btn-warning">Cetak</a>
+							</div>
 					</div>
 					<!-- Large modal -->
 					<div class="modal fade bs-example-modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">

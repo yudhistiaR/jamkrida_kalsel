@@ -3,27 +3,26 @@
 
 	$id=$sess_pegawaiid;
 
-	
-	$sql_g = "SELECT * FROM employee WHERE npp='$id'";
-	$ress_g = mysqli_query($conn, $sql_g);
-	$res = mysqli_fetch_array($ress_g);
-	
-	$sqlb = "SELECT * FROM cuti WHERE npp='$id' AND stt_cuti!='Rejected'";
-	$ressb = mysqli_query($conn, $sqlb);
-	$b = mysqli_num_rows($ressb);
+	$sql_wait = "SELECT COUNT(*) as total FROM pengajuan_jaminan WHERE status='Pending' AND user_id='$id'";
+	$ress_wait = mysqli_query($conn, $sql_wait);
+	$wait_row = mysqli_fetch_assoc($ress_wait);
+	$wait = $wait_row['total'];
 
-	$sqlc = "SELECT * FROM cuti WHERE npp='$id' AND stt_cuti='Rejected'";
-	$ressc = mysqli_query($conn, $sqlc);
-	$c = mysqli_num_rows($ressc);
+	$sql_wait = "SELECT COUNT(*) as total FROM pengajuan_jaminan WHERE status='Di Tolak' AND user_id='$id'";
+	$ress_wait = mysqli_query($conn, $sql_wait);
+	$wait_row = mysqli_fetch_assoc($ress_wait);
+	$tolak = $wait_row['total'];
 
-	$sqla = "SELECT * FROM cuti WHERE npp='$id' AND hrd_app=1";
-	$ressa = mysqli_query($conn, $sqla);
-	$a = mysqli_num_rows($ressa);
+	$sql_wait = "SELECT COUNT(*) as total FROM pengajuan_jaminan WHERE status='Di Setujui' AND user_id='$id'";
+	$ress_wait = mysqli_query($conn, $sql_wait);
+	$wait_row = mysqli_fetch_assoc($ress_wait);
+	$acc = $wait_row['total'];
+
 
 	// deskripsi halaman
 	$pagedesc = "Beranda";
 	include("layout_top.php");
-	include("dist/function/format_rupiah.php");
+	include("../dist/function/format_rupiah.php");
 ?>
 <!-- top of file -->
 		<!-- Page Content -->
@@ -34,9 +33,9 @@
 						<form class="form-horizontal">
 							<div class="panel panel-default">
 								<div class="panel-body">
-								<h2 align="center">Selamat Datang, <?php echo $res['nama_emp'];?>!</h2>
+								<h2 align="center">Selamat Datang, <?php echo $res['username'];?>!</h2>
 								<hr/>
-								<center><img src="../foto/<?php echo $res['foto_emp']?>" width="120px"></center>
+								<center><img src="https://th.bing.com/th/id/R.1871862d87bb8037d953317fb4497189?rik=MBf1NyuchSQUtQ&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f5%2fProfile.png&ehk=Ouu2uMvvMPnkP1bdIY2BTAzbwhRoG9p03NUzbwGLhlg%3d&risl=&pid=ImgRaw&r=0" width="120px"></center>
 								<hr/>
 								</div>
 							</div><!-- /.panel -->
@@ -53,7 +52,7 @@
 										<i class="fa fa-check-circle fa-3x"></i>
 									</div>
 									<div class="col-xs-9 text-right">
-										<div class="huge"><?php echo $a; ?></div>
+										<div class="huge"><?php echo $acc; ?></div>
 										<div><h4>Disetujui</h4></div>
 									</div>
 								</div>
@@ -76,7 +75,7 @@
 										<i class="fa fa-plus-circle fa-3x"></i>
 									</div>
 									<div class="col-xs-9 text-right">
-										<div class="huge"><?php echo $b; ?></div>
+										<div class="huge"><?php echo $wait; ?></div>
 										<div><h4>Menunggu Persetujuan</h4></div>
 									</div>
 								</div>
@@ -99,7 +98,7 @@
 										<i class="fa fa-minus-circle fa-3x"></i>
 									</div>
 									<div class="col-xs-9 text-right">
-										<div class="huge"><?php echo $c; ?></div>
+										<div class="huge"><?php echo $tolak; ?></div>
 										<div><h4>Ditolak</h4></div>
 									</div>
 								</div>

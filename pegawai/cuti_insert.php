@@ -1,41 +1,28 @@
 <?php
 include("sess_check.php");
 
-$npp	= $_POST['npp'];
-$ajuan = date('Y-m-d');
-$mulai	= $_POST['mulai'];
-$akhir	= $_POST['akhir'];
-$ket	= $_POST['keterangan'];
-$manager	= $_POST['manager'];
+$sess_pegawaiid;
+$sess_pegawainame;
+$perushaan	= $_POST['nama_perusahaan'];
+$telpon	= $_POST['no_telp'];
+$jenis	= $_POST['jenis_jaminan'];
+$nilai	= $_POST['nilai_jaminan'];
+$type	= $_POST['type'];
+$stt = "Pending";
 
-$start = new DateTime($mulai);
-$finish = new DateTime($akhir);
-$int = $start->diff($finish);
-$dur = $int->days;
-$durasi = $dur + 1;
-$stt = "Menunggu Approval Manager";
+$sql 	= "INSERT INTO jaminan (nama_agen, nama_perusahaan , no_telp, jenis_jaminan, nilai_jaminan)
+VALUES 	('$sess_pegawainame' ,'$perushaan','$telpon', '$jenis','$nilai')";
+$query_one 	= mysqli_query($conn, $sql);
+$id_jaminan = mysqli_insert_id($conn);
 
-$id = date('dmYHis');
-
-$pgw = "SELECT * FROM employee WHERE npp='$npp'";
-$qpgw = mysqli_query($conn, $pgw);
-$ress = mysqli_fetch_array($qpgw);
-
-$jml = $ress['jml_cuti'];
-
-
-if ($durasi > $jml) {
-	echo "<script type='text/javascript'>
-			alert('Durasi cuti lebih banyak dari jumlah cuti tersedia!.');
-			document.location = 'cuti_create.php';
-		</script>";
-} else {
-	$sql 	= "INSERT INTO cuti (no_cuti, npp  , tgl_pengajuan, tgl_awal, tgl_akhir, durasi  , keterangan, manager, stt_cuti)
-										VALUES 	('$id'  ,'$npp','$ajuan'      , '$mulai','$akhir'  ,'$durasi','$ket'     , $manager,      '$stt')";
+if ($query_one) {
+	$sql 	= "INSERT INTO pengajuan_jaminan (user_id, jaminan_id  , type_jaminan, status)
+										VALUES 	('$sess_pegawaiid'  ,'$id_jaminan','$type', '$stt')";
 	$query 	= mysqli_query($conn, $sql);
+
 	if ($query) {
 		echo "<script type='text/javascript'>
-				alert('Pengajuan cuti berhasil!');
+				alert('Pengajuan jaminan berhasil!');
 				document.location = 'cuti_waitapp.php';
 			</script>";
 	} else {
@@ -44,4 +31,9 @@ if ($durasi > $jml) {
 				document.location = 'cuti_create.php';
 			</script>";
 	}
+} else {
+	echo "<script type='text/javascript'>
+			alert('Pengajuan jaminan gagal!.');
+			document.location = 'cuti_create.php';
+		</script>";
 }
