@@ -83,6 +83,9 @@ include("libs/formatMataUang.php");
                 ?>
               </tbody>
             </table>
+            <div class="form-group">
+									<a href="laporan_cetak.php?type=barangjasa" target="_blank" class="btn btn-warning">Cetak</a>
+							</div>
           </div>
 
           <!-- Modal Detail -->
