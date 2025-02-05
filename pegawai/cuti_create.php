@@ -6,30 +6,15 @@ $pagedesc = "Buat Pengajuan";
 $menuparent = "cuti";
 include("layout_top.php");
 $now = date('Y-m-d');
-$npp = $sess_pegawaiid;
+$id = $sess_pegawaiid;
+$username = $sess_pegawainame;
 ?>
-<script type="text/javascript">
-	function valid() {
-		if (document.cuti.akhir.value < document.cuti.mulai.value) {
-			alert("Tanggal akhir harus lebih besar dari tanggal mulai cuti!");
-			return false;
-		}
-
-		if (document.cuti.mulai.value < document.cuti.now.value) {
-			alert("Tanggal mulai cuti tidak valid!");
-			return false;
-		}
-
-		return true;
-	}
-</script>
-<!-- top of file -->
 <!-- Page Content -->
 <div id="page-wrapper">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Pengajuan Cuti</h1>
+				<h1 class="page-header">Pengajuan jaminan</h1>
 			</div><!-- /.col-lg-12 -->
 		</div><!-- /.row -->
 
@@ -42,47 +27,57 @@ $npp = $sess_pegawaiid;
 				<form class="form-horizontal" name="cuti" action="cuti_insert.php" method="POST" enctype="multipart/form-data" onSubmit="return valid();">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3>Form Pengajuan Cuti</h3>
+							<h3>Form Pengajuan Jaminan</h3>
 						</div>
 						<div class="panel-body">
 							<div class="form-group">
-								<label class="control-label col-sm-3">Mulai Cuti</label>
+								<label class="control-label col-sm-3">Nama Agen</label>
 								<div class="col-sm-4">
-									<input type="date" name="mulai" class="form-control" required>
-									<input type="hidden" name="now" class="form-control" value="<?php echo $now; ?>" required>
-									<input type="hidden" name="npp" class="form-control" value="<?php echo $npp; ?>" required>
+									<input type="text" name="nama_agen" class="form-control" value="<?php echo $username; ?>" readonly>
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-sm-3">Akhir Cuti</label>
+								<label class="control-label col-sm-3">Nama perushaan</label>
 								<div class="col-sm-4">
-									<input type="date" name="akhir" class="form-control" required>
+									<input type="text" name="nama_perusahaan" placeholder="Nama Perusahaan" class="form-control" required>
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-sm-3">Keterangan</label>
+								<label class="control-label col-sm-3">No Telpon</label>
 								<div class="col-sm-4">
-									<textarea name="keterangan" class="form-control" placeholder="Keterangan" rows="3" required></textarea>
+									<input type="tel" name="no_telp" placeholder="Telpon" class="form-control" required>
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-sm-3">Manager</label>
+								<label class="control-label col-sm-3">Jenis Jaminan</label>
 								<div class="col-sm-4">
-									<select name="manager" id="manager" class="form-control" required>
-										<option value="" selected>======== Pilih Manager ========</option>
+								<input type="text" name="jenis_jaminan" placeholder="Jenis Jaminan" class="form-control" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-3">Nilai Jaminan</label>
+								<div class="col-sm-4">
+								<input type="text" name="nilai_jaminan" placeholder="Nilai Jaminan" class="form-control" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-3">Type Jaminan</label>
+								<div class="col-sm-4">
+									<select name="type" id="type" class="form-control" required>
+										<option value="" selected>======== Pilih Type ========</option>
 										<?php
-										$mySql = "SELECT * FROM employee WHERE hak_akses='Manager' AND active='Aktif' ORDER BY nama_emp";
-										$myQry = mysqli_query($conn, $mySql);
-										$dataManager = $result['npp'];
-										while ($managerData = mysqli_fetch_array($myQry)) {
-											if ($managerData['npp'] == $dataManager) {
-												$cek = " selected";
-											} else {
-												$cek = "";
-											}
-											echo "<option value='$managerData[npp]' $cek>" . $managerData['nama_emp'] . "</option>";
-										}
+										$type_names = [
+											"suretybond" => "Suretybond",
+											"bankgaransi" => "Bank Garansi",
+											"kreditmikro" => "Kredit Mikro",
+											"barangjasa" => "Kredit Barang/Jasa",
+											"multiguna" => "Kredit Multiguna"
+										];
+										
 										?>
+										<?php foreach ($type_names as $value => $label): ?>
+        									<option value="<?php echo $value; ?>"><?php echo $label; ?></option>
+    									<?php endforeach; ?>
 									</select>
 								</div>
 							</div>

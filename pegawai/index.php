@@ -3,23 +3,6 @@
 
 	$id=$sess_pegawaiid;
 
-	
-	$sql_g = "SELECT * FROM user WHERE id='$id'";
-	$ress_g = mysqli_query($conn, $sql_g);
-	$res = mysqli_fetch_array($ress_g);
-	
-	$sqlb = "SELECT * FROM cuti WHERE npp='$id' AND stt_cuti!='Rejected'";
-	$ressb = mysqli_query($conn, $sqlb);
-	$b = mysqli_num_rows($ressb);
-
-	$sqlc = "SELECT * FROM cuti WHERE npp='$id' AND stt_cuti='Rejected'";
-	$ressc = mysqli_query($conn, $sqlc);
-	$c = mysqli_num_rows($ressc);
-
-	$sqla = "SELECT * FROM cuti WHERE npp='$id' AND hrd_app=1";
-	$ressa = mysqli_query($conn, $sqla);
-	$a = mysqli_num_rows($ressa);
-
 	$sql_wait = "SELECT COUNT(*) as total FROM pengajuan_jaminan WHERE status='Pending' AND user_id='$id'";
 	$ress_wait = mysqli_query($conn, $sql_wait);
 	$wait_row = mysqli_fetch_assoc($ress_wait);
