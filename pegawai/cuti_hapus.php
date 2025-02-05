@@ -2,7 +2,7 @@
 include("sess_check.php");
 
 $no  = isset($_GET['no']) ? $_GET['no'] : '0';
-$sql = "DELETE FROM cuti WHERE no_cuti = '$no'";
+$sql = "DELETE FROM jaminan WHERE id = '$no'";
 $query = mysqli_query($conn, $sql);
 
 if ($query) {
