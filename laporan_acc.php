@@ -36,6 +36,13 @@
 	<meta name="author" content="Universitas Sangga Buana YPKP">
 
 	<title><?php echo $pagetitle ?></title>
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+>>>>>>> 774ff8f9b91a03f2e3e6507cf0c4b959e84e0c89
+=======
+>>>>>>> 03afe0f2dc6b3a9963dd805af148c88cac3deb5b
 	<link href="foto/logo.png" rel="icon" type="images/x-icon">
 
 

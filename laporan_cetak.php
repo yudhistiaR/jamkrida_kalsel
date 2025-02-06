@@ -25,6 +25,13 @@
 	// deskripsi halaman
 	$pagedesc = "Laporan Data Pengajuan Jamina";
 	$pagetitle = str_replace(" ", "_", $pagedesc);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+>>>>>>> 774ff8f9b91a03f2e3e6507cf0c4b959e84e0c89
+=======
+>>>>>>> 03afe0f2dc6b3a9963dd805af148c88cac3deb5b
 	$type_names = [
 		"suretybond" => "Suretybond",
 		"bankgaransi" => "Bank Garansi",
@@ -33,7 +40,15 @@
 		"multiguna" => "Kredit Multiguna"
 	];
 
+<<<<<<< HEAD
+	$type_display = isset($data['jenis_jaminan']) && isset($type_names[$data['jenis_jaminan']]) 
+    ? $type_names[$data['jenis_jaminan']] 
+    : 'Tidak Diketahui';
+
+
+=======
 	$type_display = isset($type_names[$type]) ? $type_names[$data[$type]] : ;
+>>>>>>> 774ff8f9b91a03f2e3e6507cf0c4b959e84e0c89
 
 ?>
 <!DOCTYPE html>
@@ -96,8 +111,15 @@
 
 	<section id="body-of-report">
 		<div class="container-fluid">
+<<<<<<< HEAD
+<<<<<<< HEAD
+			<h4 class="text-center">Laporan <?php echo $type ?></h4>
+=======
+=======
+>>>>>>> 03afe0f2dc6b3a9963dd805af148c88cac3deb5b
 			<h4 class="text-center">LAPORAN <?php echo $type ?></h4>
 			<h5 class="text-center">Periode</h5>
+>>>>>>> 774ff8f9b91a03f2e3e6507cf0c4b959e84e0c89
 			<br />
 			<table class="table table-bordered table-keuangan">
 			<table class="table table-striped table-bordered table-hover" id="tabel-data">
