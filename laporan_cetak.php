@@ -25,7 +25,6 @@
 	// deskripsi halaman
 	$pagedesc = "Laporan Data Pengajuan Jamina";
 	$pagetitle = str_replace(" ", "_", $pagedesc);
-
 	$type_names = [
 		"suretybond" => "Suretybond",
 		"bankgaransi" => "Bank Garansi",
@@ -35,8 +34,6 @@
 	];
 
 	$type_display = isset($type_names[$type]) ? $type_names[$data[$type]] : ;
-
-
 
 ?>
 <!DOCTYPE html>
