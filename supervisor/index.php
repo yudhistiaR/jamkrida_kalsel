@@ -44,7 +44,7 @@
 								<div class="panel-body">
 								<h2 align="center">Selamat Datang, <?php echo $res['nama_emp'];?>!</h2>
 								<hr/>
-								<center><img src="../foto/<?php echo $res['foto_emp']?>" width="120px"></center>
+								<center><img src="foto/logo.png<?php echo $res['foto_emp']?>" width="120px"></center>
 								<hr/>
 								</div>
 							</div><!-- /.panel -->

@@ -37,7 +37,7 @@
 
 	<title><?php echo $pagetitle ?></title>
 
-	<link href="libs/images/logo_perusahaan.png" rel="icon" type="images/x-icon">
+	<link href="foto/logo.png" rel="icon" type="images/x-icon">
 
 
 	<!-- Bootstrap Core CSS -->
@@ -68,14 +68,14 @@
 				<tbody>
 					<tr>
 						<td class="text-left" width="20%">
-							<img src="libs/images/logo_perusahaan.png" alt="logo-dkm" width="70" />
+							<img src="foto/logo.png" alt="logo-dkm" width="70" />
 						</td>
 						<td class="text-center" width="60%">
-						<b>CV. Indosari</b> <br>
-						Jl.Sapan Rancakaso, Desa Tegalluar, Kec.Bojongsoang, Kab.Bandung, Jawa Barat 30522 <br>
-						Telp: (021) 89115030<br>
+						<b>PT. Jamkrida Kalsel</b> <br>
+						Kel, Jl. M.T. Haryono No.31, RT.004/RW.001, Kertak Baru Ilir, 
+						Kec. Banjarmasin Tengah, Kota Banjarmasin, Kalimantan Selatan 70111<br>
 						<td class="text-right" width="20%">
-							<img src="libs/images/logo_perusahaan.png" alt="logo-dkm" width="70"/>
+							<img src="foto/log" alt="logo-dkm" width="70"/>
 						</td>
 					</tr>
 				</tbody>
@@ -86,8 +86,7 @@
 
 	<section id="body-of-report">
 		<div class="container-fluid">
-			<h4 class="text-center">LAPORAN DATA JAMINAN</h4>
-			<h5 class="text-center">Periode</h5>
+			<h4 class="text-center">LAPORAN DATA YANG DI SETUJUI</h4>
 			<br />
 			<table class="table table-bordered table-keuangan">
 			<table class="table table-striped table-bordered table-hover" id="tabel-data">

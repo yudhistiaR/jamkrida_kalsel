@@ -4,7 +4,7 @@
 
 <head>
 	<title>Sistem Informasi Pengajuan Jaminan PT. jamkrida Kalsel - <?php echo $pagedesc ?></title>
-	<link href="libs/images/logo_perusahaan.png" rel="icon" type="images/x-icon">
+	<link href="foto/logo.png" rel="icon" type="images/x-icon">
 	<!-- Meta tags -->
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -45,9 +45,8 @@
 						<div class="form-left-to-w3l ">
 							<select name="akses" required>
 								<option value=""> Login Sebagai </option>
-								<option value="Admin">Staf Admin</option>
-								<option value="Mng">HRD</option>
-								<option value="Pgw">Karyawan</option>
+								<option value="Admin">Admin</option>
+								<option value="Pgw">User</option>
 							</select>
 						</div>
 					</div>
