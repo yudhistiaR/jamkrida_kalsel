@@ -24,7 +24,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Sistem Informasi Pengajuan Cuti Online CV. Indosari - <?php echo $pagedesc ?></title>
+	<title>Sistem Informasi Pengajuan Jaminan PT. Jamkrida Kalsel - <?php echo $pagedesc ?></title>
 
 	<link href="libs/images/logo_perusahaan.png" rel="icon" type="images/x-icon">
 

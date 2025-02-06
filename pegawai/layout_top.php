@@ -24,9 +24,9 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Sistem Informasi Pengajuan Cuti Online Cv. Indosari - <?php echo $pagedesc ?></title>
+	<title>Sistem Informasi Pengajuan Jaminan PT. Jamkrida Kalsel - <?php echo $pagedesc ?></title>
 
-	<link href="../libs/images/logo_perusahaan.png" rel="icon" type="images/x-icon">
+	<link href="../foto/logo.png" rel="icon" type="images/x-icon">
 
     <!-- Bootstrap Core CSS -->
 	<link href="../libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -73,13 +73,13 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand hidden-xs" href="index.php">
-					<img src="../libs/images/logo_perusahaan.png" alt="brand" width="32" class="float-left image-brand">
-					<div class="float-right">&nbsp;<strong>CV. Indosari</strong></div>
+					<img src="../foto/logo.png" alt="brand" width="32" class="float-left image-brand">
+					<div class="float-right">&nbsp;<strong>PT. Jamkarida Kalsel</strong></div>
 					<div class="clear-both"></div>
 				</a>
 				<a class="navbar-brand visible-xs" href="index.php">
-					<img src="../libs/images/logo_perusahaan.png" alt="brand" width="32" class="float-left image-brand">
-					<div class="float-right">&nbsp;<strong>CV. Indosari</strong></div>
+					<img src=".../foto/logo.png" alt="brand" width="32" class="float-left image-brand">
+					<div class="float-right">&nbsp;<strong>PT. Jamkrida Kalsel</strong></div>
 					<div class="clear-both"></div>
 				</a>
 			</div><!-- /.navbar-header -->
@@ -103,7 +103,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
-							<h4>Sistem Informasi Pengajuan Cuti Online <br> <b></b></h4>
+							<h4>Sistem Informasi Pengajuan Jaminan Online <br> <b></b></h4>
 							<h5 class="text-muted"><i class="fa fa-calendar fa-fw"></i>&nbsp;<?php echo $hari_ini.", ".$tanggal." ".$bulan_ini." ".$tahun ?></h5>
 						</li>
 						<?php

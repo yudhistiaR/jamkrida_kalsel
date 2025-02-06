@@ -24,7 +24,7 @@ $pagetitle = str_replace(" ", "_", $pagedesc)
 
 	<title><?php echo $pagetitle ?></title>
 
-	<link href="libs/images/logo_perusahaan.png" rel="icon" type="images/x-icon">
+	<link href="foto/logo.png" rel="icon" type="images/x-icon">
 
 	<!-- Bootstrap Core CSS -->
 	<link href="libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
