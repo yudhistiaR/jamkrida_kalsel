@@ -34,7 +34,9 @@
 		"multiguna" => "Kredit Multiguna"
 	];
 
-	$type_display = isset($type_names[$type]) ? $type_names[$data[$type]] : ;
+	$type_display = isset($data['jenis_jaminan']) && isset($type_names[$data['jenis_jaminan']]) 
+    ? $type_names[$data['jenis_jaminan']] 
+    : 'Tidak Diketahui';
 
 
 
@@ -99,8 +101,7 @@
 
 	<section id="body-of-report">
 		<div class="container-fluid">
-			<h4 class="text-center">LAPORAN <?php echo $type ?></h4>
-			<h5 class="text-center">Periode</h5>
+			<h4 class="text-center">Laporan <?php echo $type ?></h4>
 			<br />
 			<table class="table table-bordered table-keuangan">
 			<table class="table table-striped table-bordered table-hover" id="tabel-data">

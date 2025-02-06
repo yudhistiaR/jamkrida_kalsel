@@ -87,7 +87,7 @@
             <ul class="nav navbar-top-links navbar-right">
 				<li class="dropdown dropdown-right">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-					<i class="fa fa-user fa-fw"></i>&nbsp;<?php echo ucfirst($sess_pegawaiid); ?>&nbsp;<i class="fa fa-caret-down"></i>
+					<i class="fa fa-user fa-fw"></i>&nbsp;<?php echo ucfirst($res['username']); ?>&nbsp;<i class="fa fa-caret-down"></i>
 					</a>
 					<ul class="dropdown-menu dropdown-user">
 						<li><a href="pengaturan.php"><i class="fa fa-gear fa-fw"></i>&nbsp;Pengaturan Akun</a></li>
