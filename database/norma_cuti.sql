@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `user_adm` varchar(50) NOT NULL,
   `pass_adm` varchar(100) NOT NULL,
   `foto_adm` text NOT NULL,
+  `hak_akses` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_adm`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 

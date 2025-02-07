@@ -42,13 +42,6 @@
 							<input type="password" name="password" placeholder="Password" name="password" required="">
 							<div class="clear"></div>
 						</div>
-						<div class="form-left-to-w3l ">
-							<select name="akses" required>
-								<option value=""> Login Sebagai </option>
-								<option value="Admin">Admin</option>
-								<option value="Pgw">User</option>
-							</select>
-						</div>
 					</div>
 					<div class="btnn">
 						<button type="submit" name="login">Masuk</button>
