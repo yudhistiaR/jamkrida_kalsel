@@ -120,7 +120,7 @@ $res = mysqli_fetch_array($ress_g);
 						}
 						?>
 						<!-- open <li> tag generated with php, see line 155-160 -->
-						<a href="#"><i class="fa fa-recycle fa-fw"></i>&nbsp;Pengajuan Cuti<span class="fa arrow"></span></a>
+						<a href="#"><i class="fa fa-recycle fa-fw"></i>&nbsp;Pengajuan Jaminan<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<?php
 							if ($pagedesc == "Buat Pengajuan") {

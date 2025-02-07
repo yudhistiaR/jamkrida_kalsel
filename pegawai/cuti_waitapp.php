@@ -6,7 +6,7 @@ $pagedesc = "Menunggu Approval";
 include("layout_top.php");
 include("../dist/function/format_tanggal.php");
 include("../dist/function/format_rupiah.php");
-$id = $sess_pegawaiid;
+$id = $sess_username;
 ?>
 <!-- top of file -->
 <!-- Page Content -->

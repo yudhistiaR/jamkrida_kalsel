@@ -6,8 +6,8 @@ $pagedesc = "Buat Pengajuan";
 $menuparent = "cuti";
 include("layout_top.php");
 $now = date('Y-m-d');
-$id = $sess_pegawaiid;
-$username = $sess_pegawainame;
+$id = $sess_userid;
+$username = $sess_username;
 ?>
 <!-- Page Content -->
 <div id="page-wrapper">
