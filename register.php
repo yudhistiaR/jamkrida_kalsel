@@ -24,7 +24,7 @@
 
 			<div class="art-right-w3ls">
 				<!---728x90--->
-				<h2>Login</h2>
+				<h2>Registrasi</h2>
 				<?php if (isset($_GET['err'])) : ?>
 					<?php if ($_GET['err'] == 'not_found') : ?>
 						<p style="margin-bottom: 10px; color:#f9f9f9">Maaf, nama pengguna atau password salah.</p>
@@ -33,21 +33,27 @@
 						<p style="margin-bottom: 10px; color:#f9f9f9">Maaf, nama pengguna atau password harus di isi</p>
 					<?php endif ?>
 				<?php endif ?>
-				<form action="login_auth.php" method="post">
+				<form action="register-action.php" method="post">
 					<div class="main">
 						<div class="form-left-to-w3l">
 							<input type="text" name="username" placeholder="Username" name="username" required="">
+						</div>
+						<div class="form-left-to-w3l">
+							<input type="email" name="email" placeholder="Email" name="email" required="">
+						</div>
+						<div class="form-left-to-w3l">
+							<input type="text" name="no_telpon" placeholder="No Telpon" name="no_telpon" required="">
 						</div>
 						<div class="form-left-to-w3l ">
 							<input type="password" name="password" placeholder="Password" name="password" required="">
 							<div class="clear"></div>
 						</div>
 					</div>
-					<div class="mb-4" style="margin-bottom: 10px;">
-                            <a href="register.php" style="color:#f9f9f9">belum memiliki akun?</a>
+                    <div class="mb-4" style="margin-bottom: 10px;">
+                            <a href="login.php" style="color:#f9f9f9">Sudah memiliki akun?</a>
                         </div>
 					<div class="btnn">
-						<button type="submit" name="login">Masuk</button>
+						<button type="submit" name="register">Daftar</button>
 					</div>
 				</form>
 			</div>
