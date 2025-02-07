@@ -6,7 +6,7 @@
 	include("layout_top.php");
 	include("../dist/function/format_tanggal.php");
 	include("../dist/function/format_rupiah.php");
-	$id = $sess_pegawaiid;
+	$id = $sess_userid;
 ?>
 <!-- top of file -->
 		<!-- Page Content -->
@@ -46,7 +46,7 @@
 							  JOIN user ON pengajuan_jaminan.user_id = user.id
 							  JOIN jaminan ON pengajuan_jaminan.jaminan_id = jaminan.id
 							  LEFT JOIN admin ON pengajuan_jaminan.admin_id = admin.id_adm
-							  WHERE pengajuan_jaminan.status = 'Di Setujui' AND user_id='$sess_pegawaiid'
+							  WHERE pengajuan_jaminan.status = 'Di Setujui' AND user_id='$id'
 							  ORDER BY pengajuan_jaminan.id ASC";
 								$Qry = mysqli_query($conn, $Sql);
 								
