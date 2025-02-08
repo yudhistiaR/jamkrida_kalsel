@@ -6,7 +6,7 @@ $pagedesc = "Menunggu Approval";
 include("layout_top.php");
 include("../dist/function/format_tanggal.php");
 include("../dist/function/format_rupiah.php");
-$id = $sess_username;
+$id = $sess_userid;
 ?>
 <!-- top of file -->
 <!-- Page Content -->
@@ -42,7 +42,7 @@ $id = $sess_username;
 						 JOIN user ON pengajuan_jaminan.user_id = user.id
 						 JOIN jaminan ON pengajuan_jaminan.jaminan_id = jaminan.id
 						 LEFT JOIN admin ON pengajuan_jaminan.admin_id = admin.id_adm
-						 WHERE pengajuan_jaminan.user_id = '$id'
+						 WHERE pengajuan_jaminan.user_id = '$id' AND pengajuan_jaminan.status = 'Pending'
 						 ORDER BY pengajuan_jaminan.id ASC";
 										
 						$Qry = mysqli_query($conn, $Sql);
