@@ -2,7 +2,7 @@
 include("sess_check.php");
 
 // Deskripsi halaman
-$pagedesc = "Kredit Mikro";
+$pagedesc = "Laporan Brang/jasa";
 include("layout_top.php");
 include("dist/function/format_tanggal.php");
 include("dist/function/format_rupiah.php");
@@ -14,7 +14,7 @@ include("libs/formatMataUang.php");
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">Data Suretybond</h1>
+        <h1 class="page-header">Laporan Barang/Jasa</h1>
       </div>
     </div>
 
@@ -37,7 +37,6 @@ include("libs/formatMataUang.php");
                   <th width="10%">Jenis Jaminan</th>
                   <th width="10%">Nilai Jaminan</th>
                   <th width="10%">Status</th>
-                  <th width="10%">Opsi</th>
                 </tr>
               </thead>
               <tbody>
@@ -58,9 +57,8 @@ include("libs/formatMataUang.php");
         JOIN user ON pengajuan_jaminan.user_id = user.id
         JOIN jaminan ON pengajuan_jaminan.jaminan_id = jaminan.id
         LEFT JOIN admin ON pengajuan_jaminan.admin_id = admin.id_adm
-        WHERE pengajuan_jaminan.type_jaminan = 'kreditmikro'
+        WHERE pengajuan_jaminan.type_jaminan = 'barangjasa'
         ORDER BY pengajuan_jaminan.id ASC";
-
 
                 $ress = mysqli_query($conn, $sql);
                 while ($data = mysqli_fetch_assoc($ress)) {
@@ -72,11 +70,6 @@ include("libs/formatMataUang.php");
                     <td class="text-center"> <?= $data['jenis_jaminan']; ?> </td>
                     <td class="text-center"> <?= formatRupiah($data['nilai_jaminan']); ?> </td>
                     <td class="text-center"> <?= $data['status']; ?> </td>
-                    <td class="text-center">
-                      <a href="#myModal" data-toggle="modal" data-load-code="<?= $data['id_pengajuan']; ?>" data-remote-target="#myModal .modal-body" class="btn btn-primary btn-xs">Detail</a>
-                      <a href="kredit_mikro_edit.php?id=<?= $data['id_pengajuan']; ?>" class="btn btn-warning btn-xs">Edit</a>
-                      <a href="action/delete_jaminan.php?id=<?= $data['id_pengajuan']; ?>&type=<?= $data['type_jaminan']; ?>" onclick="return confirm('Apakah anda yakin akan menghapus <?= $data['nama_agen']; ?>?');" class="btn btn-danger btn-xs">Hapus</a>
-                    </td>
                   </tr>
                 <?php
                   $i++;
@@ -84,6 +77,9 @@ include("libs/formatMataUang.php");
                 ?>
               </tbody>
             </table>
+            <div class="form-group">
+									<a href="laporan_cetak.php?type=barangjasa" target="_blank" class="btn btn-warning">Cetak</a>
+							</div>
           </div>
 
           <!-- Modal Detail -->
@@ -128,7 +124,7 @@ include("libs/formatMataUang.php");
     var $this = $(this);
     var code = $this.data('load-code');
     if (code) {
-      $($this.data('remote-target')).load('kredit_mikro_detail.php?code=' + code);
+      $($this.data('remote-target')).load('barang_jasa_detail.php?code=' + code);
       app.code = code;
     }
   });

@@ -7,7 +7,7 @@ $query = mysqli_query($conn, $sql);
 
 if ($query) {
   echo "<script type='text/javascript'>
-      alert('Penghapusan cuti berhasil!');
+      alert('Penghapusan Jaminan berhasil!');
       document.location = 'cuti_waitapp.php';
     </script>";
 } else {

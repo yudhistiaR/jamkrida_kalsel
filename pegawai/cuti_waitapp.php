@@ -75,7 +75,7 @@ $id = $sess_userid;
 									echo '<td class="text-center">' . $data['status'] . '</td>';
 									echo '<td class="text-center">
 													  <a href="#myModal" data-toggle="modal" data-load-code="' . $data['id_pengajuan'] . '" data-remote-target="#myModal .modal-body" class="btn btn-primary btn-xs">Detail</a>'; ?>
-									<a href="cuti_hapus.php?no=<?php echo $data['no_pemohon']; ?>" onclick="return confirm('Apakah anda yakin akan membatalkan pengajuan cuti No. <?php echo $data['no_pemohon']; ?>?');" class="btn btn-danger btn-xs">Hapus</a></td>
+									<a href="cuti_hapus.php?no=<?php echo $data['no_pemohon']; ?>" onclick="return confirm('Apakah anda yakin akan membatalkan pengajuan  No. <?php echo $data['no_pemohon']; ?>?');" class="btn btn-danger btn-xs">Hapus</a></td>
 								<?php
 									echo '</td>';
 									echo '</tr>';

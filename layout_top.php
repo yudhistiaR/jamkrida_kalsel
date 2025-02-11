@@ -147,6 +147,26 @@ $tahun = date("Y");
                 </li>
               </ul>
             </li>
+            <li <?php echo (isset($menuparent) && $menuparent == "master") ? 'class="active"' : ''; ?>>
+              <a href="#"><i class="fa fa-book fa-fw"></i>&nbsp;Laporan<span class="fa arrow"></span></a>
+              <ul class="nav nav-second-level">
+                <li <?php echo ($pagedesc == "Laporan Suretybond") ? 'class="active"' : ''; ?>>
+                  <a href="./lap-suretybond.php">Laporan Suretybond</a>
+                </li>
+                <li <?php echo ($pagedesc == "Laporan Bank Garansi") ? 'class="active"' : ''; ?>>
+                  <a href="./lap-bank_garansi.php">Laporan Bank Garansi</a>
+                </li>
+                <li <?php echo ($pagedesc == "Laporan Kredit Mikro") ? 'class="active"' : ''; ?>>
+                  <a href="./lap-kredit_mikro.php">Laporan Kredit Mikro</a>
+                </li>
+                <li <?php echo ($pagedesc == "Laporan Kredit Barang/Jasa") ? 'class="active"' : ''; ?>>
+                  <a href="./lap-barang_jasa.php">Laporan Kredit Barang/Jasa</a>
+                </li>
+                <li <?php echo ($pagedesc == "Laporan Kredit Multiguna") ? 'class="active"' : ''; ?>>
+                  <a href="./lap-multiguna.php">Laporan Kredit Multiguna</a>
+                </li>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
